@@ -16,6 +16,21 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+    'ember-cli-totango': {
+      totangoOptions: {
+        service_id: "SP-0000-00",
+        user: {
+          id: "marlo@barksdale.com"
+        },
+        account: {
+          id: "102213x",
+          name: "Barksdale Industries"
+        },
+
+        // use the current page in the app as the Module name in Totango
+        module: "Managers-App"
+      }
     }
   };
 

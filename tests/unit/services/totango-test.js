@@ -10,17 +10,27 @@ import {
 from 'ember-cli-totango/utils/error-messages';
 
 moduleFor('service:totango', {
-	// Specify the other units that are required for this test.
-	// needs: ['service:foo']
+  beforeEach: function() {
+  	window.totango = false;
+  	window.totango_options = false; 
+  }
 });
-
 // Replace this with your real tests.
 test('it exists', function(assert) {
 	var service = this.subject();
 	assert.ok(service);
 });
 
-test('it fails when missing options', function(assert) {
+test('it returns mock object if disabled', function(assert) {
+	var service = this.subject({
+		disabled: true
+	});
+	service.get('promise').then(function(totango){
+		assert.ok(totango.disabled);
+	});
+});
+
+test('it fails when totango options are missing', function(assert) {
 	assert.expect(3);
 	var service = this.subject({
 		totangoOptions: null

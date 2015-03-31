@@ -3,7 +3,7 @@
 [![npm version](https://badge.fury.io/js/ember-cli-totango.svg)](http://badge.fury.io/js/ember-cli-totango)
 [![Ember Observer Score](http://emberobserver.com/badges/ember-cli-totango.svg)](http://emberobserver.com/addons/ember-cli-totango)
 
-An Ember service for the [Totango Javascript Collector](http://support.totango.com/hc/en-us/articles/203639575-Totango-Javascript-Collector) library.
+An Ember service for [Totango Javascript Collector](http://support.totango.com/hc/en-us/articles/203639575-Totango-Javascript-Collector) library.
 
 ##Prerequisites
 

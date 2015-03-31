@@ -1,6 +1,9 @@
-# ember-cli-totango
+# ember-cli-totango 
+[![Build Status](https://travis-ci.org/DudaDev/ember-cli-totango.svg?branch=master)](https://travis-ci.org/DudaDev/ember-cli-totango)
+[![npm version](https://badge.fury.io/js/ember-cli-totango.svg)](http://badge.fury.io/js/ember-cli-totango)
+[![Ember Observer Score](http://emberobserver.com/badges/ember-cli-totango.svg)](http://emberobserver.com/addons/ember-cli-totango)
 
-The goal of ember-cli-totango is to provide a Ember-friendly wrapper around the [Totango Javascript Collector](http://support.totango.com/hc/en-us/articles/203639575-Totango-Javascript-Collector) library.
+An Ember service for the [Totango Javascript Collector](http://support.totango.com/hc/en-us/articles/203639575-Totango-Javascript-Collector) library.
 
 ##Prerequisites
 
@@ -106,4 +109,3 @@ For disabling Totango, just leave out `'ember-cli-totango'` from your config. In
 # License
 
  This library is lovingly brought to you by the Duda developers. We've released it under the MIT license.
- 

@@ -106,3 +106,4 @@ For disabling Totango, just leave out `'ember-cli-totango'` from your config. In
 # License
 
  This library is lovingly brought to you by the Duda developers. We've released it under the MIT license.
+ 

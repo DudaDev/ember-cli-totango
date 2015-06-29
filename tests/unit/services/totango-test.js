@@ -82,12 +82,12 @@ test('it fetches the totango script', function(assert) {
 test('it returns appropriate image DOM element on track', function(assert) {
 	assert.expect(4);
 	var service = this.subject();
-	service.get('promise').then(function(totango){
+	return service.get('promise').then(function(totango){
 		var result = totango.track("Share Document", "Document Management");
-		assert.ok(result, 'track did not returned null');
-		assert.ok(result.nodeName, 'track returned DOM element');
-		assert.equal('img', result.nodeName.toLowerCase(), 'track returned image DOM element');
-		assert.ok(result.src, 'http://sdr.totango.com/pixel.gif/?sdr_s=SP-0000-00&amp;sdr_o=102213x&amp;sdr_u=marlo%40barksdale.com&amp;sdr_a=Share%20Document&amp;sdr_m=Document%20Management&amp;sdr_odn=Barksdale%20Industries&amp;sdrurl=http%3A%2F%2Flocalhost%3A4200%2F&amp;r=0.5471000692341477&amp;sdr_heartbeat=60&amp;sdr_heartbeat_idle=60');
+		assert.ok(!!result.length, 'track did not returned an array');
+		assert.ok(result[0].nodeName, 'track returned DOM element');
+		assert.equal('img', result[0].nodeName.toLowerCase(), 'track returned image DOM element');
+		assert.ok(result[0].src, "http://sdr.totango.com/pixel.gif/?sdr_s=SP-0000-00&sdr_o=102213x&sdr_u=marlo%40barksdale.com&sdr_a=Share%20Document&sdr_m=Document%20Management&sdr_odn=Barksdale%20Industries&sdrurl=http%3A%2F%2Flocalhost%3A4200%2Ftests&r=0.4868870605714619&sdr_heartbeat=60&sdr_heartbeat_idle=60");
 	});
 });
 

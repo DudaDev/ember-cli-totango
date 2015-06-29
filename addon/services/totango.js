@@ -1,14 +1,22 @@
+import Ember from 'ember';
 import injectScript from 'ember-inject-script';
 import {
 	MISSING_SCRIPT_URL, MISSING_TOTANGO_OPTIONS
 }
 from 'ember-cli-totango/utils/error-messages';
-import Ember from 'ember';
+import defaults from 'ember-cli-totango/utils/defaults';
+
+var defaultsMixin = Ember.Mixin.create(Ember.$.extend({}, defaults));
 
 export default (Ember.Service || Ember.Object).extend({
+	_deferred: null,
+
+	_totango: null,
+
 	initDeferred: function() {
 		this.set('_deferred', Ember.RSVP.defer());
 	}.on('init'),
+
 	loadScript: function() {
 		var rejectFn = this.get('_deferred').reject,
 			resolveFn = this.get('_deferred').resolve;
@@ -35,17 +43,20 @@ export default (Ember.Service || Ember.Object).extend({
 			resolveFn(this.get('_totango'));
 		}
 	},
+
 	promise: Ember.computed(function() {
 		this.loadScript();
 		return this.get('_deferred').promise;
 	}),
+
 	instance: Ember.computed(function() {
 		return this.get('_totango');
 	}),
-	scriptUrl: '//s3.amazonaws.com/totango-cdn/totango2.js',
-	totangoOptions: null,
-	disabled: false,
 
-	_deferred: null,
-	_totango: null
-});
+	scriptUrl: null,
+
+	totangoOptions: null,
+	
+	disabled: false
+
+}, defaultsMixin);

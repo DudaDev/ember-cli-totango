@@ -1,6 +1,5 @@
 import {
-	moduleFor,
-	test
+	moduleFor, test
 }
 from 'ember-qunit';
 import Ember from 'ember';
@@ -9,12 +8,17 @@ import {
 }
 from 'ember-cli-totango/utils/error-messages';
 
-moduleFor('service:totango', {
-  beforeEach: function() {
-  	window.totango = false;
-  	window.totango_options = false; 
-  }
+moduleFor('service:totango', 'Unit | Service | totango', {
+	// Specify the other units that are required for this test.
+	// needs: ['service:foo'],
+	beforeEach: function() {
+	  Ember.run(function() {
+	    window.totango = null;
+	    window.totango_options = null;
+	  });
+	}
 });
+
 // Replace this with your real tests.
 test('it exists', function(assert) {
 	var service = this.subject();
@@ -25,7 +29,7 @@ test('it returns mock object if disabled', function(assert) {
 	var service = this.subject({
 		disabled: true
 	});
-	service.get('promise').then(function(totango){
+	service.get('promise').then(function(totango) {
 		assert.ok(totango.disabled);
 	});
 });
@@ -74,7 +78,7 @@ test('it fetches the totango script', function(assert) {
 			assert.ok(!!window.totango_options, 'Totango options are defined on the window');
 			assert.ok(!!window.totango, 'Totango is defined on the window');
 			assert.ok(!!totango, 'Totango was resolved');
-		})['catch'](function(error) {
+		})['catch'](function( /*error*/ ) {
 			assert.ok(false, 'Totango promise should have been resolved');
 		});
 });
@@ -82,7 +86,7 @@ test('it fetches the totango script', function(assert) {
 test('it returns appropriate image DOM element on track', function(assert) {
 	assert.expect(4);
 	var service = this.subject();
-	return service.get('promise').then(function(totango){
+	return service.get('promise').then(function(totango) {
 		var result = totango.track("Share Document", "Document Management");
 		assert.ok(!!result.length, 'track did not returned an array');
 		assert.ok(result[0].nodeName, 'track returned DOM element');
@@ -90,4 +94,3 @@ test('it returns appropriate image DOM element on track', function(assert) {
 		assert.ok(result[0].src, "http://sdr.totango.com/pixel.gif/?sdr_s=SP-0000-00&sdr_o=102213x&sdr_u=marlo%40barksdale.com&sdr_a=Share%20Document&sdr_m=Document%20Management&sdr_odn=Barksdale%20Industries&sdrurl=http%3A%2F%2Flocalhost%3A4200%2Ftests&r=0.4868870605714619&sdr_heartbeat=60&sdr_heartbeat_idle=60");
 	});
 });
-

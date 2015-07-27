@@ -2,15 +2,15 @@ import Ember from 'ember';
 import { initializeWithConfig } from '../../../initializers/totango-service';
 import { module, test } from 'qunit';
 
-var container, application;
+var registry, application;
 
-module('TotangoServiceInitializer', {
+module('Unit | Initializer | totango service', {
   beforeEach: function() {
-    window.totango = false;
-    window.totango_options = false; 
     Ember.run(function() {
       application = Ember.Application.create();
-      container = application.__container__;
+      registry = application.registry;
+      window.totango = null;
+      window.totango_options = null;
       application.deferReadiness();
     });
   }
@@ -18,7 +18,7 @@ module('TotangoServiceInitializer', {
 
 // Replace this with your real tests.
 test('it works', function(assert) {
-  initializeWithConfig({}, container, application);
+  initializeWithConfig({}, registry, application);
 
   // you would normally confirm the results of the initializer here
   assert.ok(true);
@@ -30,7 +30,7 @@ test('it does not load totango on init', function(assert) {
       'loadOnInit': false,
       'totangoOptions': {}
     }
-  }, container, application).then(function(){
+  }, registry, application).then(function(){
     assert.ok(!window.totango);
   });
 });
@@ -41,7 +41,7 @@ test('it loads totango on init', function(assert) {
       'loadOnInit': true,
       'totangoOptions': {}
     }
-  }, container, application).then(function(){
+  }, registry, application).then(function(){
     assert.ok(!!window.totango);
   });
 });

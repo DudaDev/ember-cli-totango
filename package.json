@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-totango",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "An Ember service for Totango Javascript Collector",
   "directories": {
     "doc": "doc",

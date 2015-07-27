@@ -25,7 +25,7 @@ if (!Function.prototype.bind) {
 	};
 }
 
-function initializeWithConfig(config, container, application) {
+function initializeWithConfig(config, registry, application) {
 	var deferred = Ember.RSVP.defer(),
 		service,
 		shouldAdvance = false;
